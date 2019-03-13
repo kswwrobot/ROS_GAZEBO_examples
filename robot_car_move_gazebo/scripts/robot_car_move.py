@@ -2,15 +2,7 @@
 
 import sys
 import rospy
-from std_msgs.msg import String, Int8, Int16, Int32
 from std_msgs.msg import Int32MultiArray
-from robobo_msgs.srv import MoveWheels, SetEmotion, Talk
-from argparse import ArgumentParser
-
-parser = ArgumentParser()
-parser.add_argument("-n", "--robot_namespace", help="Namespace of the robot", dest="ns", default="/robot_car")
-args = parser.parse_args()
-NS = args.ns
 
 if __name__ == "__main__":    
     
