@@ -2,11 +2,11 @@
   <name>robot_car_move_gazebo</name>
   <version>0.1.0</version>
   <description>robot_car_move_gazebo</description>
-  <maintainer email="chen.jiunhan@gmail.com">JiunHan Chen</maintainer>
+  <maintainer email="robotksww@gmail.com">KSWW</maintainer>
 
   <license>GPLv3</license>
 
-  <author email="chen.jiunhan@gmail.com">JiunHan Chen</author>
+  <author email="robotksww@gmail.com">KSWW</author>
 
   <buildtool_depend>catkin</buildtool_depend>
 
@@ -18,7 +18,6 @@
   <run_depend>gazebo_ros</run_depend>
   <run_depend>gazebo_ros_control</run_depend>
   <run_depend>xacro</run_depend>
-
   <run_depend>roscpp</run_depend>
   <run_depend>rospy</run_depend>
   <run_depend>std_msgs</run_depend>    

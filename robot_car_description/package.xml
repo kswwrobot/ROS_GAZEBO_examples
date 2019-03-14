@@ -4,11 +4,11 @@
   <version>0.0.0</version>
   <description>The robot_car_description package</description>
 
-  <maintainer email="chen.jiunhan@gmail.com">JiunHan Chen</maintainer>
+  <maintainer email="robotksww@gmail.com">KSWW</maintainer>
 
-  <license>GNUv3</license>  
+  <license>GPLv3</license>
 
-  <author email="chen.jiunhan@gmail.com">JiunHan Chen</author>
+  <author email="robotksww@gmail.com">KSWW</author>
 
   <buildtool_depend>catkin</buildtool_depend>
 
