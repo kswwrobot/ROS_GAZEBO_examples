@@ -1,6 +1,6 @@
 <launch>
 
-  <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+  <!-- 關於gazebo啟動相關的參數可以在這裡設定，有點像是變數宣告-->
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui" default="true"/>
@@ -8,7 +8,11 @@
   <arg name="debug" default="false"/>
   <arg name="verbose" value="true" />
 
-  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <!-- 
+    $(find gazebo_ros)會找到原本內建的project gazebo_ros，你也可以在terminal用rospack find gazebo_ros找到它的路徑，它先載入了一個空的world，
+    然後再載入我們的.world檔，並設定一些參數，$(arg ...)會取得上面的gazebo相關參數
+  -->
+  
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find robot_car_move_gazebo)/worlds/robot_car_move.world"/>
     <arg name="debug" value="$(arg debug)" />
@@ -19,6 +23,14 @@
     <arg name="headless" value="$(arg headless)"/>
   </include>
 
+  <!-- 
+    這裡的group是為了讓robot在不同的namespace底下，萬一有多個robots，之間才不會互相干擾
+    <param name="robot_description" 呼叫了xacro這支程式，並且parse了我們定義的robot_car.xacro檔案，$(find robot_car_description)會找到這個project的位置，
+    經過catkin_make編譯後，並且進入catkin_ws/devel資料夾輸入source setup.bash，你也可以在terminal用rospack find robot_car_description找到它的路徑        
+    <node name="urdf_spawner" 將機器人載入到特定位置，參數model是機器人的名字，param是機器人的描述檔也就是上面定義的robot_description。
+    
+  -->
+  
   <group ns="/robot_car">
 
       <!-- Load the URDF into the ROS Parameter Server -->

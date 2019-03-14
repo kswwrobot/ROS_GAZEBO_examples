@@ -2,7 +2,6 @@
 #include <gazebo/gazebo.hh>
 #include <gazebo/physics/physics.hh>
 #include <gazebo/common/common.hh>
-#include <ignition/math/Vector3.hh>
 #include <cmath>
 
 #include <gazebo/transport/transport.hh>
@@ -17,8 +16,6 @@
 #include "std_msgs/String.h"
 #include <thread>
 #include "std_msgs/Int32MultiArray.h"
-
-//#define NUM_PREDATOR 4
 
 namespace gazebo {
 
@@ -42,9 +39,10 @@ namespace gazebo {
         /// \brief A thread the keeps running the rosQueue
         private: std::thread rosQueueThread;
 
+        // Gazebo初始化後載入plugin，會進入Load
         public: void Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/ ) {                                              
                                    
-            //std::cout << "START" << std::endl;            
+            //這一段是用來使ROS持續的接收 在 '"/" + this->model->GetName() + "/vel_cmd"'裡面的消息，收到的消息的時候呼叫OnRosMsg控制速度
                                    
             this -> model = _model;
 
@@ -84,18 +82,20 @@ namespace gazebo {
 
         }
         
+        //控制輪子的速度 this->model指向gazebo世界裡面的機器人 ::robot_car_left_wheel_joint是joint的名字
         public: void SetVelocity(const std::vector<std::int32_t> &_vel)
         {            
             this -> model -> GetJoint(this -> model -> GetName() + "::robot_car_left_wheel_joint") -> SetVelocity(0, _vel[0]);
             this -> model -> GetJoint(this -> model -> GetName() + "::robot_car_right_wheel_joint") -> SetVelocity(0, _vel[1]);
         }
 
+        
         public: void OnRosMsg(const std_msgs::Int32MultiArray::ConstPtr &_msg)
         {
             this->SetVelocity(_msg->data);
         }
 
-        /// \brief ROS helper function that processes messages
+        // brief ROS helper function that processes messages
         private: void QueueThread()
         {
             static const double timeout = 0.01;

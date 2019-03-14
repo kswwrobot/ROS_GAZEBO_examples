@@ -1,17 +1,22 @@
 <?xml version="1.0" ?>
+
+<!-- world檔由sdf檔所定義 -->
 <sdf version="1.4">
 
   <world name="default">
+  
+    <!-- 地板-->  
     <include>
       <uri>model://ground_plane</uri>
     </include>
 
-    <!-- Global light source -->
+    <!-- 光線-->
     <include>
       <uri>model://sun</uri>
     </include>
 
-    <!-- Focus camera on tall pendulum -->
+    <!-- 定義視角從上往下，pose是 x y z roll pitch yaw -->
+    
     <gui fullscreen='0'>
       <camera name='user_camera'>
         <pose>0 0 7 0 1.570796 1.570796</pose>
