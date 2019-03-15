@@ -6,8 +6,9 @@ find_package(catkin REQUIRED COMPONENTS
     roscpp
     rospy
     std_msgs
-    gazebo
 )
+
+find_package(gazebo REQUIRED)
 
 include_directories(${catkin_INCLUDE_DIRS})             #加入編譯需要的路徑，讓系統找到的重要的檔案。
 
