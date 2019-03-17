@@ -29,12 +29,12 @@
         <pose>0 0 0 0 0 0</pose>
         <visual name="body_visual">
           <geometry>
-            <mesh><uri>file:///home/jaqq/ROS_GAZEBO_examples/freecad_gazebo/mesh/car_body.stl</uri><scale>0.001 0.001 0.001</scale></mesh>
+            <mesh><uri>file://PATH/car_body.stl</uri><scale>0.001 0.001 0.001</scale></mesh>
           </geometry>
         </visual>
         <collision name="body_collision">
           <geometry>
-            <mesh><uri>file:///home/jaqq/ROS_GAZEBO_examples/freecad_gazebo/mesh/car_body.stl</uri><scale>0.001 0.001 0.001</scale></mesh>
+            <mesh><uri>file://PATH/car_body.stl</uri><scale>0.001 0.001 0.001</scale></mesh>
           </geometry>
         </collision>       
         
